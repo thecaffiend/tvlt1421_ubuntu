@@ -25,7 +25,15 @@ References I gleaned info from for this script:
 * No mucking with xorg.conf files was needed
 * After upgrading the kernel, no additional packages were needed.
 * I have not tried booting with the USB monitor plugged in already (this is all tested via hotplug when already booted). I did at one point try this when I was half way to working (the monitor was only displaying the maroon and azure lines many have posted about), and booted to blank screens. Unplugging the monitor got me to "you're in low graphics mode", but still never came back to an x-session. Had to drop into a console and reboot. I have not looked into it further. 
-* I still occasionally get some error messages when turning on the monitor, but everything still seems to work, so unless it becomes an issue, I'll let it be.
+* I still occasionally get some error messages when turning on the monitor, but everything still seems to work, so unless it becomes an issue, I'll let it be. The error is generally of the form:
+
+```
+X Error of failed request: BadName (named color or font does not exist)
+Major opcode of failed request: 140 (RANDR)
+Minor opcode of failed request: 16 (RRCreateMode)
+Serial number of failed request: 44
+Current serial number in output stream: 44
+```
 
 ## Assumptions
 * The script assumes there will only be one device that comes up as "DVI-X" (where X is the device number) from the output of xrandr, and that this device is the USB monitor. It would be nice if this was not the case and that I could determine the DisplayLink device among more than one DVI-X. I don't see anything in xrandr's out put that would make this easy, but perhaps it could be mixed wih some other command to figure this out (lsusb maybe?).
